@@ -3,7 +3,6 @@
 import cv2
 import numpy as np 
 import matplotlib.pyplot as plt
-import folium
 
 img = cv2.imread('st.png')
 
