@@ -9,6 +9,7 @@ use_python("/usr/bin/python3")
 map_path <- "map.py"
 migrate_path <- "migrate.py"
 agri_path <- "agri.py"
+clear_path <- "clear.py"
 
 # Define the UI
 ui <- fluidPage(
@@ -63,6 +64,8 @@ ui <- fluidPage(
           br(),
           actionButton("clear_images", "Clear Images"),
           br(),
+          actionButton("clear_graph", "Clear Plots", class = "btn-danger")
+
         ),
         mainPanel(
           tabsetPanel(
@@ -130,13 +133,29 @@ server <- function(input, output) {
     
   })
   
-  # Clear Images button
   observeEvent(input$clear_images, {
-    file.remove("images/*")
+    # Get a list of all the files in the directory
+    files <- list.files("/Users/abdul/Desktop/Programming/AgriVision/images/")
+    
+    # Remove each file one by one
+    for (file in files) {
+      file.remove(paste0("/Users/abdul/Desktop/Programming/AgriVision/images/", file))
+    }
+    
+    # Clear the image plots
     output$mask_plot <- renderPlot(NULL)
     output$original_plot <- renderPlot(NULL)
     output$res_plot <- renderPlot(NULL)
   })
+
+  observeEvent(input$clear_graph, {
+    # Clear the image plots
+    output$mask_plot <- renderPlot(NULL)
+    output$original_plot <- renderPlot(NULL)
+    output$res_plot <- renderPlot(NULL)
+    run_python_script(clear_path)
+  })
+  
 }
 shinyApp(ui = ui, server = server)
 
