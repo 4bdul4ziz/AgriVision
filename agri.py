@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 # Define the path to the folder where the screenshots are moved
-folder_path = os.path.expanduser("~/Documents/Screenshots")
+folder_path = os.path.expanduser("/Users/abdul/Desktop/Programming/AgriVision/images")
 
 # Loop through all files in the folder
 for filename in os.listdir(folder_path):
@@ -28,12 +28,10 @@ for filename in os.listdir(folder_path):
         # Calculate the green area in acres
         area = 130 * 130 * 0.000247105 * np.sum(mask == 255) / 10000
 
-        # Display the original image, mask, and result image
-        cv2.imshow('image', img)
-        cv2.imshow('mask', mask)
-        cv2.imshow('res', res)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        # save the three images
+        cv2.imwrite("original.png", img)
+        cv2.imwrite("mask.png", mask)
+        cv2.imwrite("result.png", res)
 
         # Display the calculated green area
         print(f"The green area in {filename} is {area} acres.")
