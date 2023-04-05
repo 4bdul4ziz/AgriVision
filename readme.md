@@ -21,8 +21,8 @@ This is the about page of the app. It provides a brief description of the projec
 This is the user controlled that opens up when the user presses "Open Map". The user can zoom in and out of the map and click a snapshot of the map to save it and find the cultibatable lands in acres, we need to zoom it in up to 126 yds and then click the snapshot as the function for calculating the area is put to a map scale of 126yds per cm.
 
 <div>
-  <img src="media/mask.png" alt="Masked Image" style="width: auto float: left;">
-  <img src="media/original.png" alt="Original Image" style="width: auto; float: right;">
+  <img src="media/mask.png" alt="Masked Image" style="width: 25%; float: left;">
+  <img src="media/original.png" alt="Original Image" style="width: 25%; float: right;">
 </div>
 
 ![Result](media/result.png "Resultant Image")
