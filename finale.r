@@ -10,7 +10,7 @@ map_path <- "map.py"
 migrate_path <- "migrate.py"
 agri_path <- "agri.py"
 clear_path <- "clear.py"
-weather_api<-"weather_api.py"
+weather_api <- "weatherapi.py"
 
 # Define the UI
 ui <- fluidPage(
@@ -55,6 +55,8 @@ ui <- fluidPage(
     "AgriVision",
     tabPanel(
       "Calculate Green Area",
+      textInput("loc", "Enter location"),
+      dateInput("date_pred", "Enter date for prediction"),
       sidebarLayout(
         sidebarPanel(
           actionButton("open_maps", "Open Maps"),
@@ -65,7 +67,9 @@ ui <- fluidPage(
           br(),
           actionButton("clear_images", "Clear Images"),
           br(),
-          actionButton("clear_graph", "Clear Plots", class = "btn-danger")
+          actionButton("clear_graph", "Clear Plots", class = "btn-danger"),
+          br(),
+          actionButton("run_api", "Find details"),
 
         ),
         mainPanel(
@@ -77,22 +81,7 @@ ui <- fluidPage(
         )
       )
     ),
-    tabPanel(
-      "Enter Data",
-      textInput("loc", "Enter location"),
-      dateInput("date_pred", "Enter date for prediction"),
-      sidebarLayout(
-        sidebarPanel(
-          actionButton("run_api", "Find details"),
-          br(),
-        ),
-        mainPanel(
-          tabsetPanel(
-            tabPanel("Diaplay data", plotOutput("mask_plot")),
-          )
-        )
-      )
-    ),
+   
     tabPanel(
       "About",
       tags$div(
@@ -136,9 +125,15 @@ server <- function(input, output) {
     run_python_script(map_path)
   })
   
+  #open txt file
+  #NLP_file_read <- read.delim("/Users/aman/AgriVision/media/details.txt", header = TRUE, sep = "\n")
+  
   #run weather api button
   observeEvent(input$run_api, {
     run_python_script(weather_api)
+    #output$NLP_output <- renderText({
+    #li <- list(NLP_file_read)
+    #paste(toString(NLP_file_read)) 
   })
 
   # Migrate Screenshots button
@@ -157,11 +152,11 @@ server <- function(input, output) {
   
   observeEvent(input$clear_images, {
     # Get a list of all the files in the directory
-    files <- list.files("/Users/aman/coding stuff/3rd year summer/AgriVision/media")
+    files <- list.files("/Users/aman/AgriVision/working images")
     
     # Remove each file one by one
     for (file in files) {
-      file.remove(paste0("/Users/aman/coding stuff/3rd year summer/AgriVision/media", file))
+      file.remove(paste0("/Users/aman/AgriVision/working images", file))
     }
     
     # Clear the image plots
