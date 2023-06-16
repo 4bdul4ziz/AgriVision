@@ -3,13 +3,14 @@ library(reticulate)
 library(png)
 
 # Activate the Python environment
-use_python("/usr/bin/python3")
+use_python("/Library/Frameworks/Python.framework/Versions/3.11/bin/python3")
 
 # Define the paths to the Python scripts
 map_path <- "map.py"
 migrate_path <- "migrate.py"
 agri_path <- "agri.py"
 clear_path <- "clear.py"
+weather_api<-"weather_api.py"
 
 # Define the UI
 ui <- fluidPage(
@@ -77,6 +78,22 @@ ui <- fluidPage(
       )
     ),
     tabPanel(
+      "Enter Data",
+      textInput("loc", "Enter location"),
+      dateInput("date_pred", "Enter date for prediction"),
+      sidebarLayout(
+        sidebarPanel(
+          actionButton("run_api", "Find details"),
+          br(),
+        ),
+        mainPanel(
+          tabsetPanel(
+            tabPanel("Diaplay data", plotOutput("mask_plot")),
+          )
+        )
+      )
+    ),
+    tabPanel(
       "About",
       tags$div(
         style = "padding: 20px;",
@@ -88,10 +105,10 @@ ui <- fluidPage(
           "The tool consists of several Python scripts that use OpenCV to preprocess and analyze the image, and R Shiny for the user interface."
         ),
         tags$p(
-          "This tool was created as part of a project for the Essentials of Data Analytics course at VIT University."
+          "This tool was created as part of a project for the Summer Research Internship at VIT Chennai."
         ),
         tags$p(
-          "Developed by Abdul Aziz A.B"
+          "Developed by Abdul Aziz A.B and Aman Gupta."
         )
       )
     )
@@ -119,6 +136,11 @@ server <- function(input, output) {
     run_python_script(map_path)
   })
   
+  #run weather api button
+  observeEvent(input$run_api, {
+    run_python_script(weather_api)
+  })
+
   # Migrate Screenshots button
   observeEvent(input$migrate_screenshots, {
     run_python_script(migrate_path)
@@ -135,11 +157,11 @@ server <- function(input, output) {
   
   observeEvent(input$clear_images, {
     # Get a list of all the files in the directory
-    files <- list.files("/Users/abdul/Desktop/Programming/AgriVision/images/")
+    files <- list.files("/Users/aman/coding stuff/3rd year summer/AgriVision/media")
     
     # Remove each file one by one
     for (file in files) {
-      file.remove(paste0("/Users/abdul/Desktop/Programming/AgriVision/images/", file))
+      file.remove(paste0("/Users/aman/coding stuff/3rd year summer/AgriVision/media", file))
     }
     
     # Clear the image plots
