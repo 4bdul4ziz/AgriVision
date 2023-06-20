@@ -38,15 +38,25 @@ lang = 'lang_example'
 try:
     # Forecast API
     api_response = api_instance.forecast_weather(q, days, dt=dt, unixdt=unixdt, hour=hour, lang=lang)
+    pprint(api_response)
     x = api_response.location
+    y = api_response.current
     pprint(x)
 
 except ApiException as e:
     print("Exception when calling APIsApi->forecast_weather: %s\n" % e)
 
 try:
-    geeky_file = open('/Users/aman/AgriVision/media/details.txt', 'wt')
+    geeky_file = open('/Users/aman/AgriVision/media/location.txt', 'wt')
     geeky_file.write(str(x))
+    geeky_file.close()
+  
+except:
+    print("Unable to write to file")
+
+try:
+    geeky_file = open('/Users/aman/AgriVision/media/attributes.txt', 'wt')
+    geeky_file.write(str(y))
     geeky_file.close()
   
 except:

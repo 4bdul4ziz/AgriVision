@@ -76,7 +76,8 @@ ui <- fluidPage(
           tabsetPanel(
             tabPanel("Mask", plotOutput("mask_plot")),
             tabPanel("Original", plotOutput("original_plot")),
-            tabPanel("Result", plotOutput("res_plot"))
+            tabPanel("Result", plotOutput("res_plot")),
+            tabPanel("Location",textOutput("Location_output"))
           )
         )
       )
@@ -126,14 +127,17 @@ server <- function(input, output) {
   })
   
   #open txt file
-  #NLP_file_read <- read.delim("/Users/aman/AgriVision/media/details.txt", header = TRUE, sep = "\n")
+  Location_file_read <- read.delim("/Users/aman/AgriVision/media/location.txt", header = TRUE, sep = "\n")
   
+  output$Location_output <- renderText({
+
+    paste(toString(Location_file_read)) 
+  })
+  
+
   #run weather api button
   observeEvent(input$run_api, {
     run_python_script(weather_api)
-    #output$NLP_output <- renderText({
-    #li <- list(NLP_file_read)
-    #paste(toString(NLP_file_read)) 
   })
 
   # Migrate Screenshots button
