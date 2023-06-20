@@ -77,7 +77,8 @@ ui <- fluidPage(
             tabPanel("Mask", plotOutput("mask_plot")),
             tabPanel("Original", plotOutput("original_plot")),
             tabPanel("Result", plotOutput("res_plot")),
-            tabPanel("Location",textOutput("Location_output"))
+            tabPanel("Location",textOutput("Location_output")),
+            tabPanel("Attributes",textOutput("Attributes_output"))
           )
         )
       )
@@ -104,6 +105,7 @@ ui <- fluidPage(
     )
   )
 )
+source_python('weatherapi.py')
 
 # Define the server
 server <- function(input, output) {
@@ -112,7 +114,7 @@ server <- function(input, output) {
   run_python_script <- function(script_path) {
     py_run_file(script_path, convert = TRUE)
   }
-  
+
   # Function to plot an image
   plot_image <- function(image_path) {
     img <- readPNG(image_path)
@@ -126,18 +128,34 @@ server <- function(input, output) {
     run_python_script(map_path)
   })
   
-  #open txt file
-  Location_file_read <- read.delim("/Users/aman/AgriVision/media/location.txt", header = TRUE, sep = "\n")
-  
+  #to show location details
   output$Location_output <- renderText({
 
-    paste(toString(Location_file_read)) 
+    if (file.size("/Users/aman/AgriVision/media/location.txt")>0){
+
+    Location_file_read <- read.delim("/Users/aman/AgriVision/media/location.txt", header = TRUE, sep = "\n") # nolint
+
+    paste(toString(Location_file_read))
+    }
   })
-  
+
+  #to show climate attributes
+  output$Attributes_output <- renderText({
+
+    if (file.size("/Users/aman/AgriVision/media/attributes.txt")>0){
+
+    Attribute_file_read <- read.delim("/Users/aman/AgriVision/media/attributes.txt", header = TRUE, sep = "\n") # nolint
+
+    paste(toString(Attribute_file_read))
+    }
+  })
 
   #run weather api button
   observeEvent(input$run_api, {
-    run_python_script(weather_api)
+    value=input$loc
+    date=input$date_pred
+    v=test_weather(value,date)
+    #run_python_script(weather_api) 
   })
 
   # Migrate Screenshots button
@@ -179,5 +197,3 @@ server <- function(input, output) {
   
 }
 shinyApp(ui = ui, server = server)
-
-                         
