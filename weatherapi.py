@@ -3,6 +3,7 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+import requests
 
 
 configuration = swagger_client.Configuration()
@@ -35,7 +36,7 @@ def test_weather(location,date):
         pprint(api_response)
         x = api_response.location
         y = api_response.current
-        #pprint(x)
+        pprint(x)
 
     except ApiException as e:
         print("Exception when calling APIsApi->forecast_weather: %s\n" % e)
@@ -51,6 +52,23 @@ def test_weather(location,date):
     try:
         geeky_file = open('/Users/aman/AgriVision/media/attributes.txt', 'wt')
         geeky_file.write(str(y))
+        geeky_file.close()
+    
+    except:
+        print("Unable to write to file")
+
+    
+    lat= api_response.location.lat
+    lng= api_response.location.lon
+    response = requests.get('https://api.stormglass.io/v2/bio/point',params={'lat': lat,'lng': lng ,'params': 'soilMoisture'}, 
+                            headers={'Authorization': 'f6088ca4-1674-11ee-86b2-0242ac130002-f6088d12-1674-11ee-86b2-0242ac130002'})
+
+    json_data = response.json()
+    #print(json_data)
+
+    try:
+        geeky_file = open('/Users/aman/AgriVision/media/full_info.txt', 'wt')
+        geeky_file.write(str(api_response)+str(json_data))
         geeky_file.close()
     
     except:
