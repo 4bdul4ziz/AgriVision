@@ -8,11 +8,11 @@ AgriVision is a project aimed at finding cultivatable land for agricultural need
 - Provides a user-friendly interface through R Shiny app
 - Marks regions with greener areas as potential cultivatable land
 
-![app](media/app.png "App Interface")
+![app](media/app2.png "App Interface")
 
 This is the interface that the user sees when they run the app.R file. The user can upload the satellite image of the land to be processed and view the results.
 
-![about](media/about.png "About")
+![about](media/about2.png "About")
 
 This is the about page of the app. It provides a brief description of the project and the team members.
 
@@ -21,17 +21,24 @@ This is the about page of the app. It provides a brief description of the projec
 This is the user controlled that opens up when the user presses "Open Map". The user can zoom in and out of the map and click a snapshot of the map to save it and find the cultibatable lands in acres, we need to zoom it in up to 126 yds and then click the snapshot as the function for calculating the area is put to a map scale of 126yds per cm.
 
 <div>
-  <img src="media/mask.png" alt="Masked Image" style="width: auto; float: left;">
-  <img src="media/original.png" alt="Original Image" style="width: auto; float: right;">
+  <img src="media/mask2.png" alt="Masked Image" style="width: auto; float: left;">
+  <img src="media/original2.png" alt="Original Image" style="width: auto; float: right;">
 </div>
 
-![Result](media/result.png "Resultant Image")
+![Result](media/result2.png "Resultant Image")
 
 This shows the green areas segregated visually as a plot within the app interface.
 
 ![Console](media/console.png "Console")
 
 This shows the output of the image, where the area is printed in acres, it also shows the output of the migrate button which is used to migrate the screenshots saved in a default folder onto the folder where the project is contained for the program to read it. 
+
+<div>
+  <img src="media/gpt_output_1.png" alt="Masked Image" style="width: auto; float: left;">
+  <img src="media/gpt_output_2.png" alt="Original Image" style="width: auto; float: right;">
+</div>
+
+These shows the output we receive after feeding in the attributes to GPT-4 model
 
 
 
