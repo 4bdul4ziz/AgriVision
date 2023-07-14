@@ -7,6 +7,8 @@ AgriVision is a project aimed at finding cultivatable land for agricultural need
 - Utilizes real-time satellite images and advanced image processing techniques to identify cultivatable land
 - Provides a user-friendly interface through R Shiny app
 - Marks regions with greener areas as potential cultivatable land
+- Gives the user option to enter location
+- Provides precise cop suitability and cultivable land recommendations 
 
 ![app](media/app2.png "App Interface")
 
@@ -33,10 +35,9 @@ This shows the green areas segregated visually as a plot within the app interfac
 
 This shows the output of the image, where the area is printed in acres, it also shows the output of the migrate button which is used to migrate the screenshots saved in a default folder onto the folder where the project is contained for the program to read it. 
 
-<div>
-  <img src="media/gpt_output_1.png" alt="Masked Image" style="width: auto; float: left;">
-  <img src="media/gpt_output_2.png" alt="Original Image" style="width: auto; float: right;">
-</div>
+![output_1](media/gpt_output_1.png "output_1")
+
+![output_2](media/gpt_output_2.png "output_2")
 
 These shows the output we receive after feeding in the attributes to GPT-4 model
 
@@ -50,6 +51,8 @@ To get started with AgriVision, follow these steps:
 3. Run the app.R file
 4. Upload the satellite image of the land to be processed
 5. View the processed images and the mapped cultivatable land
+6. Enter location, find details and refresh the page
+7. View the location specific details and attributes
 
 ## Usage
 AgriVision can be used to identify and map cultivatable land for agricultural needs. The results obtained from the image processing techniques can help farmers and agricultural organizations make informed decisions and contribute to the growth and development of the agriculture sector.
