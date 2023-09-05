@@ -1,7 +1,11 @@
 from pprint import pprint
 import requests
+from dotenv import load_dotenv, find_dotenv
+from pathlib import Path
+import os
 
-api_key = '6eb9d101698a47a49db72950230706'
+load_dotenv(Path(".env"))
+api_key = os.getenv("WEATHER_API")
 base_url = 'https://api.weatherapi.com/v1'
 
 def astronomy(location, date):
