@@ -3,7 +3,7 @@ library(reticulate)
 library(png)
 
 # Activate the Python environment
-use_python("/Library/Frameworks/Python.framework/Versions/3.11/bin/python3")
+use_python("~/miniconda3/envs/r-reticulate/bin/python")
 
 # Define the paths to the Python scripts
 map_path <- "map.py"
@@ -131,9 +131,9 @@ server <- function(input, output) {
   #to show location details
   output$Location_output <- renderText({
 
-    if (file.size("/Users/aman/AgriVision/media/location.txt")>0){
+    if (file.size("media/location.txt")>0){
 
-    Location_file_read <- read.delim("/Users/aman/AgriVision/media/location.txt", header = TRUE, sep = "\n") # nolint
+    Location_file_read <- read.delim("media/location.txt", header = TRUE, sep = "\n") # nolint
 
     paste(toString(Location_file_read))
     }
@@ -142,9 +142,9 @@ server <- function(input, output) {
   #to show climate attributes
   output$Attributes_output <- renderText({
 
-    if (file.size("/Users/aman/AgriVision/media/attributes.txt")>0){
+    if (file.size("media/attributes.txt")>0){
 
-    Attribute_file_read <- read.delim("/Users/aman/AgriVision/media/attributes.txt", header = TRUE, sep = "\n") # nolint
+    Attribute_file_read <- read.delim("media/attributes.txt", header = TRUE, sep = "\n") # nolint
 
     paste(toString(Attribute_file_read))
     }
@@ -174,11 +174,11 @@ server <- function(input, output) {
   
   observeEvent(input$clear_images, {
     # Get a list of all the files in the directory
-    files <- list.files("/Users/aman/AgriVision/working images")
+    files <- list.files("working images")
     
     # Remove each file one by one
     for (file in files) {
-      file.remove(paste0("/Users/aman/AgriVision/working images", file))
+      file.remove(paste0("working images", file))
     }
     
     # Clear the image plots

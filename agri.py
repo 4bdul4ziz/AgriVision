@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 # Define the path to the folder where the screenshots are moved
-folder_path = os.path.expanduser("/Users/aman/AgriVision/working images")
+folder_path = os.path.expanduser("images")
 
 # Loop through all files in the folder
 for filename in os.listdir(folder_path):

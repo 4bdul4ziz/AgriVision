@@ -3,7 +3,7 @@ import os
 
 # Define the source and destination paths
 desktop_path = os.path.expanduser("~/Desktop")
-destination_path = os.path.expanduser("/Users/aman/AgriVision/working images")
+destination_path = os.path.expanduser("images")
 
 # Create the destination folder if it doesn't exist
 if not os.path.exists(destination_path):
