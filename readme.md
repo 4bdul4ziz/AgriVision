@@ -2,7 +2,7 @@
 
 AgriVision is a project aimed at finding cultivatable land for agricultural needs using computer technology and image processing techniques. The lack of suitable land for food crops cultivation is a significant challenge in improving the farming sector. With increasing population and demand for food, this project serves as a starting point for further research and development in the field of agriculture and food production.
 
-## Features
+### Features
 
 - Utilizes real-time satellite images and advanced image processing techniques to identify cultivatable land
 - Provides a user-friendly interface through R Shiny app
@@ -43,7 +43,7 @@ These shows the output we receive after feeding in the attributes to GPT-4 model
 
 
 
-## Getting Started
+### Getting Started
 To get started with AgriVision, follow these steps:
 
 1. Clone the repository
@@ -54,10 +54,10 @@ To get started with AgriVision, follow these steps:
 6. Enter location, find details and refresh the page
 7. View the location specific details and attributes
 
-## Usage
+### Usage
 AgriVision can be used to identify and map cultivatable land for agricultural needs. The results obtained from the image processing techniques can help farmers and agricultural organizations make informed decisions and contribute to the growth and development of the agriculture sector.
 
-## Conclusion
+### Conclusion
 AgriVision is a step forward in meeting the increasing demand for food. By bridging the gap between modern technology and agriculture, this project paves the way for a sustainable and self-sufficient future. "Empowering agriculture with technology for a sustainable future.”
 
 
