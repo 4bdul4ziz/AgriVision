@@ -45,7 +45,7 @@ except ApiException as e:
     print("Exception when calling APIsApi->forecast_weather: %s\n" % e)
 
 try:
-    geeky_file = open('/Users/aman/coding stuff/3rd year summer/AgriVision/media/details.txt', 'wt')
+    geeky_file = open('data/details.txt', 'wt')
     geeky_file.write(str(x))
     geeky_file.close()
   

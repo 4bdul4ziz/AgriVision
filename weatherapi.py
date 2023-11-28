@@ -26,13 +26,13 @@ def forecast_weather(location, days, date, unixdt, hour, lang):
     pprint(x)
 
     try:
-        with open('media/location.txt', 'wt') as file:
+        with open('data/location.txt', 'wt') as file:
             file.write(str(x))
     except:
         print("Unable to write to file")
 
     try:
-        with open('media/attributes.txt', 'wt') as file:
+        with open('data/attributes.txt', 'wt') as file:
             file.write(str(y))
     except:
         print("Unable to write to file")
@@ -46,7 +46,7 @@ def forecast_weather(location, days, date, unixdt, hour, lang):
     # print(json_data)
 
     try:
-        with open('media/full_info.txt', 'wt') as file:
+        with open('data/full_info.txt', 'wt') as file:
             file.write(str(data) + str(json_data))
     except:
         print("Unable to write to file")

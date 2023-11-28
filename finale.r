@@ -131,9 +131,9 @@ server <- function(input, output) {
   #to show location details
   output$Location_output <- renderText({
 
-    if (file.size("media/location.txt")>0){
+    if (file.size("data/location.txt")>0){
 
-    Location_file_read <- read.delim("media/location.txt", header = TRUE, sep = "\n") # nolint
+    Location_file_read <- read.delim("data/location.txt", header = TRUE, sep = "\n") # nolint
 
     paste(toString(Location_file_read))
     }
@@ -142,9 +142,9 @@ server <- function(input, output) {
   #to show climate attributes
   output$Attributes_output <- renderText({
 
-    if (file.size("media/attributes.txt")>0){
+    if (file.size("data/attributes.txt")>0){
 
-    Attribute_file_read <- read.delim("media/attributes.txt", header = TRUE, sep = "\n") # nolint
+    Attribute_file_read <- read.delim("data/attributes.txt", header = TRUE, sep = "\n") # nolint
 
     paste(toString(Attribute_file_read))
     }
