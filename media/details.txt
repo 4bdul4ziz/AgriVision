@@ -1,8 +1,0 @@
-{'country': 'India',
- 'lat': 13.08,
- 'localtime': '2023-06-16 20:35',
- 'localtime_epoch': 1686927931,
- 'lon': 80.28,
- 'name': 'Chennai',
- 'region': 'Tamil Nadu',
- 'tz_id': 'Asia/Kolkata'}
