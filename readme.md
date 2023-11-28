@@ -10,34 +10,34 @@ AgriVision is a project aimed at finding cultivatable land for agricultural need
 - Gives the user option to enter location
 - Provides precise cop suitability and cultivable land recommendations 
 
-![app](media/app2.png "App Interface")
+![app](data/app2.png "App Interface")
 
 This is the interface that the user sees when they run the app.R file. The user can upload the satellite image of the land to be processed and view the results.
 
-![about](media/about2.png "About")
+![about](data/about2.png "About")
 
 This is the about page of the app. It provides a brief description of the project and the team members.
 
-![map](media/map.png "Map")
+![map](data/map.png "Map")
 
 This is the user controlled that opens up when the user presses "Open Map". The user can zoom in and out of the map and click a snapshot of the map to save it and find the cultibatable lands in acres, we need to zoom it in up to 126 yds and then click the snapshot as the function for calculating the area is put to a map scale of 126yds per cm.
 
 <div>
-  <img src="media/mask2.png" alt="Masked Image" style="width: auto; float: left;">
-  <img src="media/original2.png" alt="Original Image" style="width: auto; float: right;">
+  <img src="data/mask2.png" alt="Masked Image" style="width: auto; float: left;">
+  <img src="data/original2.png" alt="Original Image" style="width: auto; float: right;">
 </div>
 
-![Result](media/result2.png "Resultant Image")
+![Result](data/result2.png "Resultant Image")
 
 This shows the green areas segregated visually as a plot within the app interface.
 
-![Console](media/console.png "Console")
+![Console](data/console.png "Console")
 
 This shows the output of the image, where the area is printed in acres, it also shows the output of the migrate button which is used to migrate the screenshots saved in a default folder onto the folder where the project is contained for the program to read it. 
 
-![output_1](media/gpt_output_1.png "output_1")
+![output_1](data/gpt_output_1.png "output_1")
 
-![output_2](media/gpt_output_2.png "output_2")
+![output_2](data/gpt_output_2.png "output_2")
 
 These shows the output we receive after feeding in the attributes to GPT-4 model
 
