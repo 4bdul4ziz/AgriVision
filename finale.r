@@ -96,10 +96,10 @@ ui <- fluidPage(
           "The tool consists of several Python scripts that use OpenCV to preprocess and analyze the image, and R Shiny for the user interface."
         ),
         tags$p(
-          "This tool was created as part of a project for the Summer Research Internship at VIT Chennai."
+          "This tool was created as part of a projectwork for CSE1904 at VIT Chennai."
         ),
         tags$p(
-          "Developed by Abdul Aziz A.B and Aman Gupta."
+          "Developed by Abdul Aziz A.B."
         )
       )
     )
